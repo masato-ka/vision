@@ -120,7 +120,7 @@ class PhotoTour(data.Dataset):
 
     def download(self):
         if self._check_datafile_exists():
-            print('# Found cached data {}'.format(self.data_file))
+            print(('# Found cached data {}'.format(self.data_file)))
             return
 
         if not self._check_downloaded():
@@ -132,7 +132,7 @@ class PhotoTour(data.Dataset):
 
             download_url(url, self.root, filename, md5)
 
-            print('# Extracting data {}\n'.format(self.data_down))
+            print(('# Extracting data {}\n'.format(self.data_down)))
 
             import zipfile
             with zipfile.ZipFile(fpath, 'r') as z:
@@ -141,7 +141,7 @@ class PhotoTour(data.Dataset):
             os.unlink(fpath)
 
         # process and save as torch files
-        print('# Caching data {}'.format(self.data_file))
+        print(('# Caching data {}'.format(self.data_file)))
 
         dataset = (
             read_image_file(self.data_dir, self.image_ext, self.lens[self.name]),

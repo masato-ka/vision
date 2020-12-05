@@ -6,7 +6,7 @@ import six
 import string
 import sys
 if sys.version_info[0] == 2:
-    import cPickle as pickle
+    import pickle as pickle
 else:
     import pickle
 
@@ -91,15 +91,13 @@ class LSUN(data.Dataset):
                 c_short.pop(len(c_short) - 1)
                 c_short = '_'.join(c_short)
                 if c_short not in categories:
-                    raise(ValueError('Unknown LSUN class: ' + c_short + '.'
-                                     'Options are: ' + str(categories)))
+                    raise ValueError
                 c_short = c.split('_')
                 c_short = c_short.pop(len(c_short) - 1)
                 if c_short not in dset_opts:
-                    raise(ValueError('Unknown postfix: ' + c_short + '.'
-                                     'Options are: ' + str(dset_opts)))
+                    raise ValueError
         else:
-            raise(ValueError('Unknown option for classes'))
+            raise ValueError
         self.classes = classes
 
         # for each class, create an LSUNClassDataset

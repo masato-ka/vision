@@ -75,8 +75,7 @@ class DatasetFolder(data.Dataset):
         classes, class_to_idx = find_classes(root)
         samples = make_dataset(root, class_to_idx, extensions)
         if len(samples) == 0:
-            raise(RuntimeError("Found 0 files in subfolders of: " + root + "\n"
-                               "Supported extensions are: " + ",".join(extensions)))
+            raise RuntimeError
 
         self.root = root
         self.loader = loader
