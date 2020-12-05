@@ -25,7 +25,7 @@ if __name__ == "__main__":
 
     if args.accimage:
         torchvision.set_image_backend('accimage')
-    print('Using {}'.format(torchvision.get_image_backend()))
+    print(('Using {}'.format(torchvision.get_image_backend())))
 
     # Data loading code
     transform = transforms.Compose([
@@ -46,12 +46,12 @@ if __name__ == "__main__":
 
     start_time = timer()
     batch_count = 20 * args.nThreads
-    for _ in tqdm(range(batch_count)):
+    for _ in tqdm(list(range(batch_count))):
         batch = next(train_iter)
     end_time = timer()
-    print("Performance: {dataset:.0f} minutes/dataset, {batch:.1f} ms/batch,"
+    print(("Performance: {dataset:.0f} minutes/dataset, {batch:.1f} ms/batch,"
           " {image:.2f} ms/image {rate:.0f} images/sec"
           .format(dataset=(end_time - start_time) * (float(len(train_loader)) / batch_count / 60.0),
                   batch=(end_time - start_time) / float(batch_count) * 1.0e+3,
                   image=(end_time - start_time) / (batch_count * args.batchSize) * 1.0e+3,
-                  rate=(batch_count * args.batchSize) / (end_time - start_time)))
+                  rate=(batch_count * args.batchSize) / (end_time - start_time))))

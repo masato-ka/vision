@@ -33,7 +33,7 @@ def download_url(url, root, filename, md5):
 
     # downloads file
     if os.path.isfile(fpath) and check_integrity(fpath, md5):
-        print('Using downloaded and verified file: ' + fpath)
+        print(('Using downloaded and verified file: ' + fpath))
     else:
-        print('Downloading ' + url + ' to ' + fpath)
+        print(('Downloading ' + url + ' to ' + fpath))
         urllib.request.urlretrieve(url, fpath)
